@@ -1,0 +1,19 @@
+{
+  "name": "job-ads-checkout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supetranmp/JobAdsCheckout.git"
+  },
+  "author": "Marlon Supetran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supetranmp/JobAdsCheckout/issues"
+  },
+  "homepage": "https://github.com/supetranmp/JobAdsCheckout#readme"
+}
