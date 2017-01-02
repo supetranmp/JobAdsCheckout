@@ -1,6 +1,6 @@
 import Checkout from './Checkout';
-import AdStubs from './AdStubs';
-import FakePricingRules from './FakePricingRules';
+import AdStubs from './Ads';
+import FakePricingRules from './PricingRules';
 
 it('total expected is equal to $987.97', () => {
     const checkout = new Checkout();
