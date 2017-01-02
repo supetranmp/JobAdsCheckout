@@ -1,16 +1,18 @@
+import AdTypes from './AdTypes';
+
 const AdStubs = {
     classic: {
-        id: 'classic',
+        id: AdTypes.classic,
         name: 'Classic Ad',
         price: 269.99
     },
     standout: {
-        id: 'classic',
+        id: AdTypes.standout,
         name: 'Classic Ad',
         price: 322.99
     },
     premium: {
-        id: 'premium',
+        id: AdTypes.premium,
         name: 'Premium Ad',
         price: 394.99
     }

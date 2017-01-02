@@ -18,6 +18,7 @@ class Checkout {
     total() {
         let totalAmount = 0;
         this.items.forEach((i) => {
+            
             totalAmount += i.price;
         });
         return totalAmount;
