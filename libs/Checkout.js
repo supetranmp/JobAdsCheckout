@@ -20,22 +20,11 @@ class Checkout {
     }
 
     total() {
-        let totalAmount = 0;
-        this.items.forEach((i) => {
-            const pricingRule = this.pricingRules.find((pr) => {
-                return pr.id === i.id;
-            });
-
-            switch (pricingRule) {
-                case PricingRuleTypes.Percentage:
-                totalAmount += i
-                    break;
-                default:
-                    totalAmount += i.price;
-            }
-
+        let total = 0;
+        this.items.forEach((item) => {
+            total += (this.pricingRules && this.pricingRules.compute && this.pricingRules.compute(item)) || item.price;
         });
-        return totalAmount;
+        return total;
     }
 }
 

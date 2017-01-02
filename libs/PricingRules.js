@@ -1,7 +1,7 @@
 import PricingRuleTypes from './PricingRuleTypes';
 import AdTypes from './AdTypes';
 
-const FakePricingRules = {
+const PricingRules = {
     unilever: [
         {
             type: PricingRuleTypes.Percentage,
@@ -44,4 +44,4 @@ const FakePricingRules = {
     ]
 }
 
-module.exports = FakePricingRules;
+module.exports = PricingRules;
