@@ -46,13 +46,13 @@ const Customers = [
             {
                 type: PricingRuleTypes.Price,
                 id: AdTypes.Standout,
-                price: 299.99
+                price: 309.99
             },
             {
                 type: PricingRuleTypes.Quantity,
                 id: AdTypes.Premium,
                 quantity: 3,
-                pricePerAd: 389.99
+                price: 389.99
             }
         ]
     }

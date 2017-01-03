@@ -1,5 +1,5 @@
 import PricingRuleTypes from './PricingRuleTypes';
-import PricingStrategyFactory from './PricingStrategy';
+import PricingStrategy from './PricingStrategy';
 import AdTypes from './AdTypes';
 
 class Checkout {
@@ -46,7 +46,7 @@ class Checkout {
         try {
             this.items.forEach((item) => {
                 const pricingRule = findPricingRuleById(this.pricingRules, item.id);
-                const pricingStrategy = PricingStrategyFactory.create(pricingRule);
+                const pricingStrategy = PricingStrategy.create(pricingRule);
                 total += pricingStrategy.calculate(item);
             });
         }
