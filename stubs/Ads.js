@@ -1,21 +1,27 @@
-import AdTypes from './AdTypes';
+import AdTypes from '../libs/AdTypes';
 
-const AdStubs = {
-    classic: {
+const Ads = [
+    {
         id: AdTypes.Classic,
         name: 'Classic Ad',
         price: 269.99
     },
-    standout: {
+    {
         id: AdTypes.Standout,
-        name: 'Classic Ad',
+        name: 'Standout Ad',
         price: 322.99
     },
-    premium: {
+    {
         id: AdTypes.Premium,
         name: 'Premium Ad',
         price: 394.99
     }
+];
+
+Ads.findById = (id) => {
+    return Ads.find((a) => {
+        return a.id === id;
+    });
 };
 
-module.exports = AdStubs;
+module.exports = Ads;

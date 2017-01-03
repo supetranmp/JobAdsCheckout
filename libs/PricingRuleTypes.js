@@ -1,5 +1,5 @@
 const PricingRuleTypes = {
-    Percentage: 0,
+    Ratio: 0,
     Price: 1,
     Quantity: 2
 };
