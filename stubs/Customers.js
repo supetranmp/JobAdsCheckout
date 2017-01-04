@@ -7,7 +7,7 @@ const Customers = [
         pricingRules: [
             {
                 type: PricingRuleTypes.Ratio,
-                id: AdTypes.Classic,
+                itemId: AdTypes.Classic,
                 numerator: 2,
                 denominator: 3
             }
@@ -18,7 +18,7 @@ const Customers = [
         pricingRules: [
             {
                 type: PricingRuleTypes.Price,
-                id: AdTypes.Standout,
+                itemId: AdTypes.Standout,
                 price: 299.99
             }
         ]
@@ -28,7 +28,7 @@ const Customers = [
         pricingRules: [
             {
                 type: PricingRuleTypes.Quantity,
-                id: AdTypes.Premium,
+                itemId: AdTypes.Premium,
                 quantity: 4,
                 price: 379.99
             }
@@ -39,18 +39,18 @@ const Customers = [
         pricingRules: [
             {
                 type: PricingRuleTypes.Ratio,
-                id: 'classic',
+                itemId: 'classic',
                 numerator: 4,
                 denominator: 5
             },
             {
                 type: PricingRuleTypes.Price,
-                id: AdTypes.Standout,
+                itemId: AdTypes.Standout,
                 price: 309.99
             },
             {
                 type: PricingRuleTypes.Quantity,
-                id: AdTypes.Premium,
+                itemId: AdTypes.Premium,
                 quantity: 3,
                 price: 389.99
             }

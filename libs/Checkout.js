@@ -61,7 +61,7 @@ class Checkout {
 
 function findPricingRuleById(pricingRules, id) {
     return pricingRules.find((pricingRule) => {
-        return pricingRule.id === id
+        return pricingRule.itemId === id
     });
 }
 
