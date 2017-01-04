@@ -6,8 +6,8 @@ const Customers = [
         name: 'Unilever',
         pricingRules: [
             {
-                type: PricingRuleTypes.Ratio,
-                itemId: AdTypes.Classic,
+                type: PricingRuleTypes.RATIO,
+                itemId: AdTypes.CLASSIC,
                 numerator: 2,
                 denominator: 3
             }
@@ -17,8 +17,8 @@ const Customers = [
         name: 'Apple',
         pricingRules: [
             {
-                type: PricingRuleTypes.Price,
-                itemId: AdTypes.Standout,
+                type: PricingRuleTypes.PRICE,
+                itemId: AdTypes.STANDOUT,
                 price: 299.99
             }
         ]
@@ -27,8 +27,8 @@ const Customers = [
         name: 'Nike',
         pricingRules: [
             {
-                type: PricingRuleTypes.Quantity,
-                itemId: AdTypes.Premium,
+                type: PricingRuleTypes.QUANTITY,
+                itemId: AdTypes.PREMIUM,
                 quantity: 4,
                 price: 379.99
             }
@@ -38,19 +38,19 @@ const Customers = [
         name: 'Ford',
         pricingRules: [
             {
-                type: PricingRuleTypes.Ratio,
-                itemId: 'classic',
+                type: PricingRuleTypes.RATIO,
+                itemId: AdTypes.CLASSIC,
                 numerator: 4,
                 denominator: 5
             },
             {
-                type: PricingRuleTypes.Price,
-                itemId: AdTypes.Standout,
+                type: PricingRuleTypes.PRICE,
+                itemId: AdTypes.STANDOUT,
                 price: 309.99
             },
             {
-                type: PricingRuleTypes.Quantity,
-                itemId: AdTypes.Premium,
+                type: PricingRuleTypes.QUANTITY,
+                itemId: AdTypes.PREMIUM,
                 quantity: 3,
                 price: 389.99
             }

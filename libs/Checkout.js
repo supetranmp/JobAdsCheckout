@@ -4,51 +4,59 @@ import AdTypes from './AdTypes';
 
 class Checkout {
     constructor(pricingRules) {
-        this.items = [];
-        this.pricingRules = [];
-
-        if (pricingRules) {
-            this.pricingRules = this.pricingRules.concat(pricingRules);
-        }
+        this.cart = [];
+        this.pricingRules = (pricingRules && [].concat(pricingRules)) || [];
     }
 
     add(item) {
         try {
-            let itemIndex;
-            let itemExists;
-            let existingItem = this.items.find((element, index) => {
-                if (itemExists = (element.id === item.id)) {
-                    itemIndex = index;
-                }
-                return itemExists;
-            });
+            // Get item index from cart
+            const itemIndex = findItemIndexByItemId(this.cart, item.id);
 
-            if (!existingItem) {
-                this.items.push({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: 1
-                });
+            // Get pricing rule for the specified item type            
+            const pricingRule = findPricingRuleByItemId(this.pricingRules, item.id);
+            const pricingStrategy = PricingStrategy.create(pricingRule);
+
+            // Check if the item being added is already in the cart
+            if (itemIndex >= 0) {
+                // Increment the item's quantity
+                const cartItem = this.cart[itemIndex];
+                cartItem.quantity += 1;
+                cartItem.price = pricingStrategy.calculate(item, cartItem.quantity);
             }
             else {
-                this.items[itemIndex].quantity += 1;
+                // Add the item to the cart
+                const itemPrice = pricingStrategy.calculate(item, 1);
+                this.cart.push({
+                    item: item,
+                    quantity: 1,
+                    price: itemPrice,
+                    pricingRule: pricingRule
+                });
             }
         }
         catch (err) {
-            console.error(err.message)
+            console.error(err.message);
+        }
+    }
+
+    remove(item) {
+        try {
+            // Get item index from cart
+            const itemIndex = findItemIndexByItemId(this.cart, item.id);
+            this.cart.splice(itemIndex, 1);
+        }
+        catch (err) {
+            console.error(err.message);
         }
     }
 
     total() {
         let total = 0;
-
         try {
-            this.items.forEach((item) => {
-                const pricingRule = findPricingRuleById(this.pricingRules, item.id);
-                const pricingStrategy = PricingStrategy.create(pricingRule);
-                total += pricingStrategy.calculate(item);
-            });
+            total = this.cart.reduce((a, b) => {
+                return { price: a.price + b.price }
+            }).price;
         }
         catch (err) {
             console.error(err.message);
@@ -59,9 +67,15 @@ class Checkout {
     }
 }
 
-function findPricingRuleById(pricingRules, id) {
+function findItemIndexByItemId(cart, itemId) {
+    return cart.findIndex((element) => {
+        return element.item.id === itemId;
+    });
+}
+
+function findPricingRuleByItemId(pricingRules, itemId) {
     return pricingRules.find((pricingRule) => {
-        return pricingRule.itemId === id
+        return pricingRule.itemId === itemId
     });
 }
 

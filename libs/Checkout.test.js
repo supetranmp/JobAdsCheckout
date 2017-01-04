@@ -4,9 +4,9 @@ import Ads from '../stubs/Ads';
 import Customers from '../stubs/Customers';
 
 // Ads
-const classicAd = Ads.findById(AdTypes.Classic);
-const standoutAd = Ads.findById(AdTypes.Standout);
-const premiumAd = Ads.findById(AdTypes.Premium);
+const classicAd = Ads.findById(AdTypes.CLASSIC);
+const standoutAd = Ads.findById(AdTypes.STANDOUT);
+const premiumAd = Ads.findById(AdTypes.PREMIUM);
 
 // Customers
 const unilever = Customers.findByName('Unilever');

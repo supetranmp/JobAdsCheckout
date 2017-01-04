@@ -1,7 +1,7 @@
 const PricingRuleTypes = {
-    Ratio: 0,
-    Price: 1,
-    Quantity: 2
+    RATIO: 0,
+    PRICE: 1,
+    QUANTITY: 2
 };
 
 module.exports = PricingRuleTypes;

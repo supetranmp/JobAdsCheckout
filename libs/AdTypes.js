@@ -1,7 +1,7 @@
 const AdTypes = {
-    Classic: 'classic',
-    Standout: 'standout',
-    Premium: 'premium'
+    CLASSIC: 'classic',
+    STANDOUT: 'standout',
+    PREMIUM: 'premium'
 }
 
 module.exports = AdTypes;
