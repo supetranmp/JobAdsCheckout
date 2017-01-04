@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import CustomerDropDownList from './components/DropDownLists/CustomerDropDownList';
+import CustomersDropDownMenu from './components/DropDownLists/CustomersDropDownMenu';
 import './App.css';
 
 class App extends Component {
     render() {
         return (
             <div className="app">
-                <CustomerDropDownList />
+                <CustomersDropDownMenu />
                 {
                     /*
                     <div className="app-header">

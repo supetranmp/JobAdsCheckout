@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const CustomerDropDownList = (props) => {
+const CustomersDropDownMenu = (props) => {
     return (
         <div>
             <h1>Hello World!!!</h1>
@@ -8,4 +8,4 @@ const CustomerDropDownList = (props) => {
     );
 };
 
-export default CustomerDropDownList;
+export default CustomersDropDownMenu;
