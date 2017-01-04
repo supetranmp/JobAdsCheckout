@@ -14,58 +14,109 @@ const apple = Customers.findByName('Apple');
 const nike = Customers.findByName('Nike');
 const ford = Customers.findByName('Ford');
 
-// Tests
+describe('Expected checkout total after adding item(s)', () => {
+    it('for default customer is $987.97 ', () => {
+        const checkout = new Checkout();
+        checkout.add(classicAd);
+        checkout.add(standoutAd);
+        checkout.add(premiumAd);
+        expect(checkout.total()).toBe(987.97);
+    });
 
-// Customer: default  
-it('total expected is equal to $987.97', () => {
-    const checkout = new Checkout();
-    checkout.add(classicAd);
-    checkout.add(standoutAd);
-    checkout.add(premiumAd);
-    expect(checkout.total()).toBe(987.97);
+    it('for Unilever is $934.97', () => {
+        const checkout = new Checkout(unilever.pricingRules);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(premiumAd);
+        expect(checkout.total()).toBe(934.97);
+    });
+
+    it('for Apple is $1294.96', () => {
+        const checkout = new Checkout(apple.pricingRules);
+        checkout.add(standoutAd);
+        checkout.add(standoutAd);
+        checkout.add(standoutAd);
+        checkout.add(premiumAd);
+        expect(checkout.total()).toBe(1294.96);
+    });
+
+    it('for Nike is $1519.96', () => {
+        const checkout = new Checkout(nike.pricingRules);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        expect(checkout.total()).toBe(1519.96);
+    });
+
+    it('for Ford is $2559.92', () => {
+        const checkout = new Checkout(ford.pricingRules);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(standoutAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        expect(checkout.total()).toBe(2559.92);
+    });
 });
 
-// Customer: Unilever
-it('total expected is equal to $934.97', () => {
-    const checkout = new Checkout(unilever.pricingRules);
-    checkout.add(classicAd);
-    checkout.add(classicAd);
-    checkout.add(classicAd);
-    checkout.add(premiumAd);
-    expect(checkout.total()).toBe(934.97);
-});
+describe('Expected checkout total after removing item(s)', () => {
+    it('for default customer is $717.98', () => {
+        const checkout = new Checkout();
+        checkout.add(classicAd);
+        checkout.add(standoutAd);
+        checkout.add(premiumAd);
+        checkout.remove(classicAd);
+        expect(checkout.total()).toBe(717.98);
+    });
 
-// Customer: Apple
-it('total expected is equal to $1294.96', () => {
-    const checkout = new Checkout(apple.pricingRules);
-    checkout.add(standoutAd);
-    checkout.add(standoutAd);
-    checkout.add(standoutAd);
-    checkout.add(premiumAd);
-    expect(checkout.total()).toBe(1294.96);
-});
+    it('for Unilever is $934.97', () => {
+        const checkout = new Checkout(unilever.pricingRules);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(premiumAd);
+        checkout.remove(classicAd);
+        expect(checkout.total()).toBe(934.97);
+    });
 
-// Customer: Nike
-it('total expected is equal to $1519.96', () => {
-    const checkout = new Checkout(nike.pricingRules);
-    checkout.add(premiumAd);
-    checkout.add(premiumAd);
-    checkout.add(premiumAd);
-    checkout.add(premiumAd);
-    expect(checkout.total()).toBe(1519.96);
-});
+    it('for Apple is $994.97', () => {
+        const checkout = new Checkout(apple.pricingRules);
+        checkout.add(standoutAd);
+        checkout.add(standoutAd);
+        checkout.add(standoutAd);
+        checkout.add(premiumAd);
+        checkout.remove(standoutAd);
+        expect(checkout.total()).toBe(994.97);
+    });
 
-// Customer: Ford
-it('total expected is equal to $', () => {
-    const checkout = new Checkout(ford.pricingRules);
-    checkout.add(classicAd);
-    checkout.add(classicAd);
-    checkout.add(classicAd);
-    checkout.add(classicAd);
-    checkout.add(classicAd);
-    checkout.add(standoutAd);
-    checkout.add(premiumAd);
-    checkout.add(premiumAd);
-    checkout.add(premiumAd);
-    expect(checkout.total()).toBe(2559.92);
+    it('for Nike is $1184.97', () => {
+        const checkout = new Checkout(nike.pricingRules);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.remove(premiumAd);
+        expect(checkout.total()).toBe(1184.97);
+    });
+
+    it('for Ford is $2249.93', () => {
+        const checkout = new Checkout(ford.pricingRules);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(classicAd);
+        checkout.add(standoutAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.add(premiumAd);
+        checkout.remove(standoutAd);        
+        expect(checkout.total()).toBe(2249.93);
+    });
 });

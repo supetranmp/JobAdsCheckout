@@ -19,7 +19,7 @@ class Checkout {
 
             // Check if the item being added is already in the cart
             if (itemIndex >= 0) {
-                // Increment the item's quantity
+                // Add +1 to item's quantity
                 const cartItem = this.cart[itemIndex];
                 cartItem.quantity += 1;
                 cartItem.price = pricingStrategy.calculate(item, cartItem.quantity);
@@ -44,7 +44,24 @@ class Checkout {
         try {
             // Get item index from cart
             const itemIndex = findItemIndexByItemId(this.cart, item.id);
-            this.cart.splice(itemIndex, 1);
+
+            if (itemIndex >= 0) {
+                // Get pricing rule for the specified item type            
+                const pricingRule = findPricingRuleByItemId(this.pricingRules, item.id);
+                const pricingStrategy = PricingStrategy.create(pricingRule);
+
+                // Check if quantity is greater than 1
+                if (this.cart[itemIndex].quantity > 1) {
+                    // Add +1 to item's quantity
+                    const cartItem = this.cart[itemIndex];
+                    cartItem.quantity -= 1;
+                    cartItem.price = pricingStrategy.calculate(item, cartItem.quantity);
+                }
+                else {
+                    // Remove the item from the cart
+                    this.cart.splice(itemIndex, 1);
+                }
+            }
         }
         catch (err) {
             console.error(err.message);
@@ -62,7 +79,7 @@ class Checkout {
             console.error(err.message);
         }
         finally {
-            return total;
+            return Math.round(total * 100) / 100;
         }
     }
 }
