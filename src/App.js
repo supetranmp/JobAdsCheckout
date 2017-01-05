@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CustomersDropDownMenu from './components/DropDownMenus/CustomersDropDownMenu';
+import DropDownMenu from './components/DropDownMenu/DropDownMenu';
 import DataService from './services/DataService';
 import DataContextFactory from './services/DataContextFactory';
 import './App.css';
@@ -8,7 +8,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.customerDataService = new DataService(DataContextFactory.AdsDataContext);
+        this.customerDataService = new DataService(DataContextFactory.CustomersDataContext);
         this.state = {
             customers: []
         };
@@ -28,7 +28,7 @@ class App extends Component {
 
         return (
             <div className="app">
-                <CustomersDropDownMenu customers={customers}/>
+                <DropDownMenu options={customers} />
             </div>
         );
     }
