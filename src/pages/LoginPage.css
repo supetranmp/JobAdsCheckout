@@ -1,11 +1,15 @@
-.login-page {}
+.login-page {
+    height: 100%;
+    width: 100%;
+    background-color: #DF1878;
+}
 
 .login-page-form {
-    height: 300px;
-    width: 400px;
+    height: 240px;
+    width: 320px;
+    padding: 20px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #DF1878;
 }
