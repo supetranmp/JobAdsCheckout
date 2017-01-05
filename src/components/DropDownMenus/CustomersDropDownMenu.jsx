@@ -12,7 +12,11 @@ const CustomersDropDownMenu = (props) => {
                 (customers && customers.length) &&
                 customers.map((customer) => {
                     return (
-                        <option value={customer.name}>{customer.name}</option>
+                        <option
+                            key={customer.id}
+                            value={customer.name}>
+                            {customer.name}
+                        </option>
                     );
                 })
             }
