@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import CustomersDropDownMenu from './components/DropDownLists/CustomersDropDownMenu';
+import CustomersDropDownMenu from './components/DropDownMenus/CustomersDropDownMenu';
+import DataService from './services/DataService';
+import DataContextFactory from './services/DataContextFactory';
 import './App.css';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.customerDataService = new DataService(DataContextFactory.AdsDataContext);
+        this.state = {
+            customers: []
+        };
+    }
+
+    componentWillMount() {
+        const {state} = this;
+        this.customerDataService.get((err, res) => {
+            if (err) throw err;
+            state.customers = res;
+        });
+        this.setState(state);
+    }
+
     render() {
+        const {customers} = this.state;
+
         return (
             <div className="app">
-                <CustomersDropDownMenu />
-                {
-                    /*
-                    <div className="app-header">
-                    <img src={logo} className="app-logo" alt="logo" />
-                    <h2>Welcome to React</h2>
-                    </div>
-                    <p className="app-intro">
-                        To get started, edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    */
-                }
+                <CustomersDropDownMenu customers={customers}/>
             </div>
         );
     }
