@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import {withRouter} from 'react-router';
 // import DropDownMenu from './components/DropDownMenu/DropDownMenu';
 // import DataService from './services/DataService';
 // import DataContextFactory from './services/DataContextFactory';
 import './App.css';
 
 class App extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+    }
 
     // componentWillMount() {
     //     const {state} = this;
@@ -29,4 +32,8 @@ class App extends Component {
     }
 }
 
-export default App;
+App.propTypes = {
+    children: PropTypes.object.isRequired
+};
+
+export default withRouter(App);
