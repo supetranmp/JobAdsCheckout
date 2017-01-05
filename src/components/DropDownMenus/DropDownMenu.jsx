@@ -12,7 +12,15 @@ class DropDownMenu extends Component {
     }
 
     onChangeHandler = (e) => {
-        this.setState({ value: e.target.value });
+        const {value} = e.target;
+        this.setState({
+            value: value
+        }, () => {
+            const {onChange} = this.props;
+            if (onChange) {
+                onChange(value)
+            }
+        });
     };
 
     render() {
@@ -45,7 +53,8 @@ DropDownMenu.props = {
             id: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
             name: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]).isRequired
         })
-    )
+    ),
+    onChange: PropTypes.event
 };
 
 export default DropDownMenu;
