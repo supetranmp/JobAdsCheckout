@@ -16,5 +16,22 @@
 }
 
 .header-inner-cart {
+    padding-left: 15px;
+    /*margin-left: auto;*/
+}
+
+.header-inner-user {
+    margin-left: auto;
+    color: #FFFFFF;
+    font-size: 1em;
+    text-align: right;
+}
+
+.header-inner-logout {
+    font-size: 0.8em;   
+}
+
+.header-inner-login {
+    font-size: 1.2em;
     margin-left: auto;
 }

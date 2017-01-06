@@ -1,8 +1,4 @@
-.login-page {
-    /*position: fixed;
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, -0%);*/
+.login {
     height: 100%;
     width: 100%;
     background-color: #F71B85;
@@ -11,13 +7,13 @@
     justify-content: center;    
 }
 
-.login-page-form {
+.login-form {
     height: 150px;
     width: 320px;
     padding-left: 10px;
 }
 
-.login-page-menu {
+.login-menu {
     display: flex;
     flex-direction: row;
     align-items: center;

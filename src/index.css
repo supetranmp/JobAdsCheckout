@@ -10,3 +10,24 @@ html, body, .root {
     height: 100% !important;
     width: 100% !important;
 }
+
+button {
+    /*background: none;*/
+    /*border: none;*/
+    font-size: 1em;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.word-break {
+    word-break: break-all;
+    word-break: break-word;
+}

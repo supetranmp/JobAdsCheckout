@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import SmallLogo from '../../images/logo-sm.jpg';
+import LogoIcon, { LogoIconSizes } from '../Icons/LogoIcon';
 import Cart from '../../images/cart.png';
 import './Header.css';
 
 const Header = (props) => {
+    const {user, onLogoutClick} = props;
+
     return (
         <div className="header">
             <div className="header-inner">
                 <Link className="header-inner-logo" to="/">
-                    <img src={SmallLogo} alt="logo" />
+                    <LogoIcon size={LogoIconSizes.SMALL} />
                 </Link>
+                {
+                    user &&
+                    <span className="header-inner-user">
+                        <div>{`Hello, ${user}`}</div>
+                        <div>
+                            <Link
+                                className="header-inner-logout"
+                                to="/login"
+                                onClick={onLogoutClick}>(logout)</Link>
+                        </div>
+                    </span> ||
+                    <Link className="header-inner-login" to="/login">login</Link>
+                }
                 <Link className="header-inner-cart" to="/cart">
-                    <img src={Cart} alt="cart"/>
+                    <img src={Cart} alt="cart" />
                 </Link>
             </div>
         </div>
     );
 }
+
+Header.propTypes = {
+    user: PropTypes.string,
+    onLogoutClick: PropTypes.func
+};
 
 export default Header;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { withRouter } from 'react-router';
 import App from './App';
 
 it('renders without crashing', () => {

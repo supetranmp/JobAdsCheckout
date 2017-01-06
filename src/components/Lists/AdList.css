@@ -1,0 +1,40 @@
+.ad {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ad-list {
+    width: 600px;
+}
+
+.ad-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.ad-details {
+    max-width: 480px;
+    height: 100px;
+    text-align: left;
+    flex: 1 1 auto;
+}
+
+.ad-details > h3 {
+    margin: 0;
+}
+
+.ad-button {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+.ad-button > p {
+    color: #d50000;
+    margin-top: 0;
+    font-size: 1.3em;
+}
