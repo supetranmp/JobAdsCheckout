@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-// import AdTypes from '../../libs/AdTypes';
-// import PricingRuleTypes from '../../libs/PricingRuleTypes';
+import './DropDownMenu.css';
 
 class DropDownMenu extends Component {
     constructor(props) {
@@ -28,7 +27,10 @@ class DropDownMenu extends Component {
         const {options} = this.props;
 
         return (
-            <select name="customers" value={value} onChange={this.onChangeHandler}>
+            <select
+                className="drop-down-menu"
+                name="customers"
+                value={value} onChange={this.onChangeHandler}>
                 <option disabled value="select"> -- select an customer -- </option>
                 {
                     (options && options.length) &&

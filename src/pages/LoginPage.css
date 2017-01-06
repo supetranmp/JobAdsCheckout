@@ -1,15 +1,24 @@
 .login-page {
+    /*position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -0%);*/
     height: 100%;
     width: 100%;
-    background-color: #DF1878;
+    background-color: #F71B85;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;    
 }
 
 .login-page-form {
-    height: 240px;
+    height: 150px;
     width: 320px;
-    padding: 20px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding-left: 10px;
+}
+
+.login-page-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
