@@ -39,4 +39,8 @@ Header.propTypes = {
     onLogoutClick: PropTypes.func
 };
 
+Header.contextTypes = {
+    form: PropTypes.object.isRequired
+};
+
 export default Header;

@@ -60,7 +60,7 @@ const Customers = [
 
 Customers.findByName = (name) => {
     return Customers.find((c) => {
-        return c.name === name.trim()
+        return c.name === name && name.trim()
     });
 };
 

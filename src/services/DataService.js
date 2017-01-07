@@ -17,6 +17,15 @@ class DataService {
             callback(err, res);
         }
     }
+
+    getByNameOrId(nameOrId, callback) {
+        let err;
+        let res = this.context.get(nameOrId);
+
+        if (callback) {
+            callback(err, res);
+        }
+    }
 }
 
 module.exports = DataService;

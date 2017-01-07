@@ -20,7 +20,7 @@ class AdList extends Component {
 
     render() {
         const {ads} = this.state;
-        const {onItemAdded} = this.props;
+        const {onItemAddClick} = this.props;
 
         return (
             <div className="ad">
@@ -37,7 +37,7 @@ class AdList extends Component {
                                         </span>
                                         <span className="ad-button">
                                             <p>{`$${a.price}`}</p>
-                                            <button onClick={onItemAdded}>add to cart</button>
+                                            <button onClick={onItemAddClick}>add to cart</button>
                                         </span>
                                     </div>
                                     <hr />
@@ -52,7 +52,7 @@ class AdList extends Component {
 }
 
 AdList.propTypes = {
-    onItemAdded: PropTypes.func
+    onItemAddClick: PropTypes.func
 }
 
 export default AdList;

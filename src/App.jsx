@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import Header from './components/Header/Header';
+import Checkout from './libs/Checkout';
 import './App.css';
 
 class App extends Component {
@@ -10,6 +11,16 @@ class App extends Component {
         this.state = {
             user: localStorage.customer
         };
+    }
+
+    getChildContext() {
+        return { form: this };
+    }
+
+    onItemAdded = (item) => {
+        const {state} = this;
+        state.cart = state.cart.concat(item);
+        this.setState(state);
     }
 
     onLogoutClickHandler = () => {
@@ -36,7 +47,7 @@ App.propTypes = {
 };
 
 App.childContextTypes = {
-    router: PropTypes.object.isRequired
+    checkout: PropTypes.object.isRequired
 };
 
 export default withRouter(App);

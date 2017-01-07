@@ -21,7 +21,7 @@ class LoginForm extends Component {
         });
     }
 
-    onCustomerChanged = (customer) => {
+    onCustomerChange = (customer) => {
         const {router} = this.props;
         localStorage.customer = customer;
         router.push('/');
@@ -42,7 +42,7 @@ class LoginForm extends Component {
                     <h2>Login</h2>
                     <div className="login-menu">
                         <span>As customer: {'\u00a0'}</span>
-                        <DropDownMenu options={customers} onChange={this.onCustomerChanged} />
+                        <DropDownMenu options={customers} onChange={this.onCustomerChange} />
                     </div>
                     <p>
                         <Link to="/" onClick={this.onAnonymousLinkClicked}>or continue without logging in...</Link>
