@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import Logo from '../../images/logo.jpg';
-import SmallLogo from '../../images/logo-sm.jpg';
+import LogoImage from '../../images/logo.jpg';
+import LogoSmallImage from '../../images/logo-sm.jpg';
 
 export const LogoIconSizes = {
     SMALL: 'SMALL',
@@ -13,10 +13,10 @@ const LogoIcon = (props) => {
     let icon;
     switch (size) {
         case LogoIconSizes.SMALL:
-            icon = SmallLogo;
+            icon = LogoSmallImage;
             break;
         default:
-            icon = Logo;
+            icon = LogoImage;
     }
 
     return (

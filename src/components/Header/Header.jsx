@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import LogoIcon, { LogoIconSizes } from '../Icons/LogoIcon';
-import Cart from '../../images/cart.png';
+import CartIcon from '../Icons/CartIcon';
 import './Header.css';
 
 const Header = (props) => {
@@ -29,7 +29,7 @@ const Header = (props) => {
                     <Link className="header-inner-login" to="/login">login</Link>
                 }
                 <Link className="header-inner-cart" to="/cart">
-                    <img src={Cart} alt="cart" />
+                    <CartIcon />
                 </Link>
             </div>
         </div>
