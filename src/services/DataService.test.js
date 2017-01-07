@@ -1,6 +1,6 @@
 import DataService from './DataService';
 import { MockAdsDataContext, MockCustomersDataContext } from './MockDataContext';
-import { InvalidArgumentError, NotImplementedError } from '../libs/Errors';
+import { InvalidArgumentError, NotImplementedError } from '../lib/Errors';
 
 describe('Data Service', () => {
     const mockDataContext = {

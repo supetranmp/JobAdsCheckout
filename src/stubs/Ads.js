@@ -1,4 +1,4 @@
-import AdTypes from '../libs/AdTypes';
+import AdTypes from '../lib/AdTypes';
 
 const Ads = [
     {

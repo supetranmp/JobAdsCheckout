@@ -1,4 +1,4 @@
-import PricingRuleTypes from '../libs/PricingRuleTypes';
+import PricingRuleTypes from '../lib/PricingRuleTypes';
 import PricingStrategy from './PricingStrategy';
 import AdTypes from './AdTypes';
 

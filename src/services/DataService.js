@@ -1,4 +1,4 @@
-import { InvalidArgumentError } from '../libs/Errors';
+import { InvalidArgumentError } from '../lib/Errors';
 
 class DataService {
     constructor(context) {

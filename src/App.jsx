@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import Header from './components/Header/Header';
-// import Checkout from './libs/Checkout';
+// import Checkout from './lib/Checkout';
 import './App.css';
 
 class App extends Component {

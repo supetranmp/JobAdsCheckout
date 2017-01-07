@@ -1,5 +1,5 @@
-import PricingRuleTypes from '../libs/PricingRuleTypes';
-import AdTypes from '../libs/AdTypes';
+import PricingRuleTypes from '../lib/PricingRuleTypes';
+import AdTypes from '../lib/AdTypes';
 
 const Customers = [
     {
