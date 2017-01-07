@@ -14,16 +14,18 @@ const Header = (props) => {
                     <LogoIcon size={LogoIconSizes.SMALL} />
                 </Link>
                 {
-                    user &&
-                    <span className="header-inner-user">
-                        <div>{`Hello, ${user}`}</div>
-                        <div>
-                            <Link
-                                className="header-inner-logout"
-                                to="/login"
-                                onClick={onLogoutClick}>(logout)</Link>
-                        </div>
-                    </span> ||
+                    (
+                        user &&
+                        <span className="header-inner-user">
+                            <div>{`Hello, ${user}`}</div>
+                            <div>
+                                <Link
+                                    className="header-inner-logout"
+                                    to="/login"
+                                    onClick={onLogoutClick}>(logout)</Link>
+                            </div>
+                        </span>
+                    ) ||
                     <Link className="header-inner-login" to="/login">login</Link>
                 }
                 <Link className="header-inner-cart" to="/cart">

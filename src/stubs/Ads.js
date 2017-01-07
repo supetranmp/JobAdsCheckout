@@ -16,7 +16,7 @@ const Ads = [
     {
         id: AdTypes.PREMIUM,
         name: 'Premium Ad',
-        description: '​​Allows advertisers to use a company logo and use a longer presentation text, and puts the ad at the top of the results, allowing higher visibility.',
+        description: '​​Allows advertisers to use a company logo and use a longer presentation text, and puts the ad at the top of the results, allowing higher visibility.',
         price: 394.99
     }
 ];

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import Header from './components/Header/Header';
-import Checkout from './libs/Checkout';
+// import Checkout from './libs/Checkout';
 import './App.css';
 
 class App extends Component {
@@ -13,9 +13,9 @@ class App extends Component {
         };
     }
 
-    getChildContext() {
-        return { form: this };
-    }
+    // getChildContext() {
+    //     return { form: this };
+    // }
 
     onItemAdded = (item) => {
         const {state} = this;
@@ -46,8 +46,8 @@ App.propTypes = {
     children: PropTypes.object.isRequired
 };
 
-App.childContextTypes = {
-    checkout: PropTypes.object.isRequired
-};
+// App.childContextTypes = {
+//     checkout: PropTypes.object.isRequired
+// };
 
 export default withRouter(App);

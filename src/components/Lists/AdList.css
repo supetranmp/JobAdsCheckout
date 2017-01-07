@@ -12,12 +12,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 20px 0px;
+    margin: 20px;
 }
 
 .ad-details {
     max-width: 480px;
-    height: 100px;
+    min-height: 100px;
+    margin-right: 10px;
     text-align: left;
     flex: 1 1 auto;
 }

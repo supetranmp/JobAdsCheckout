@@ -1,6 +1,4 @@
-import PricingRuleTypes from './PricingRuleTypes';
 import PricingStrategy from './PricingStrategy';
-import AdTypes from './AdTypes';
 
 class Checkout {
     constructor(pricingRules) {
