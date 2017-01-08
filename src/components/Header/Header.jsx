@@ -31,7 +31,7 @@ const Header = (props) => {
                 <Link className="header-inner-cart" to="/cart">
                     <div>
                         {
-                            cartItemCount &&
+                            (cartItemCount > 0) &&
                             <div className="header-inner-cart-count">
                                 {
                                     cartItemCount

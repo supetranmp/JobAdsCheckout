@@ -29,12 +29,12 @@ class App extends Component {
         };
     }
 
-    onCartChanged = (cart) => {
+    onCartChanged = (cart, callback) => {
         // Persist cart in local storage
         localStorage.cart = JSON.stringify(cart);
         this.setState({
             cart: JSON.parse(localStorage.cart)
-        });
+        }, callback);
     }
 
     onLogoutClickHandler = () => {
@@ -51,7 +51,13 @@ class App extends Component {
             <div className="app">
                 <Header
                     username={user && user.name}
-                    cartItemCount={cart && cart.length}
+                    cartItemCount={
+                        cart &&
+                        cart.length &&
+                        cart.reduce((a, b) => {
+                            return { quantity: a.quantity + b.quantity }
+                        }).quantity
+                    }
                     onLogoutClick={this.onLogoutClickHandler} />
                 {children}
             </div>

@@ -8,6 +8,19 @@
     width: 600px;
 }
 
+.ad-list-header {
+    text-decoration: none;
+    text-align: left;
+    margin-top: 5px;    
+    margin-bottom: 5px;
+}
+
+.ad-list-header > h2 {
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
 .ad-item {
     display: flex;
     flex-direction: row;
@@ -15,28 +28,33 @@
     margin: 20px;
 }
 
-.ad-details {
+.ad-details-col1 {
     max-width: 480px;
     min-height: 100px;
-    margin-right: 10px;
+    margin-right: 20px;
     text-align: left;
     flex: 1 1 auto;
 }
 
-.ad-details > h3 {
+.ad-details-col1 > h3 {
     margin: 0;
 }
 
-.ad-button {
+.ad-details-col2 {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
     margin-left: auto;
-    min-width: 100px;    
+    min-width: 80px;
+    font-size: 12px;
 }
 
-.ad-button > p {
+.ad-details-col2 > p {
     color: #d50000;
     margin-top: 0;
-    font-size: 1.3em;
+    font-size: 18px;
+}
+
+.ad-details-col2 > button {
+    height: 24px;
 }
