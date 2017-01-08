@@ -8,8 +8,9 @@ class App extends Component {
     constructor(props) {
         super(props);
 
+        const loggedInUser = localStorage.user && JSON.parse(localStorage.user);
         this.state = {
-            user: localStorage.user
+            user: loggedInUser && loggedInUser.name,
         };
     }
 
