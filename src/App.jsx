@@ -10,7 +10,7 @@ class App extends Component {
 
         const loggedInUser = localStorage.user && JSON.parse(localStorage.user);
         this.state = {
-            user: loggedInUser && loggedInUser.name,
+            username: loggedInUser && loggedInUser.name,
         };
     }
 
@@ -33,12 +33,12 @@ class App extends Component {
     }
 
     render() {
-        const {user} = this.state;
+        const {username} = this.state;
         const {children} = this.props;
 
         return (
             <div className="app">
-                <Header user={user} onLogoutClick={this.onLogoutClickHandler} />
+                <Header username={username} onLogoutClick={this.onLogoutClickHandler} />
                 {children}
             </div>
         );

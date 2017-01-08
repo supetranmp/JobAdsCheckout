@@ -5,7 +5,7 @@ import CartIcon from '../Icons/CartIcon';
 import './Header.css';
 
 const Header = (props) => {
-    const {user, onLogoutClick} = props;
+    const {username, onLogoutClick} = props;
 
     return (
         <div className="header">
@@ -15,9 +15,9 @@ const Header = (props) => {
                 </Link>
                 {
                     (
-                        user &&
+                        username &&
                         <span className="header-inner-user">
-                            <div>{`Hello, ${user.name}`}</div>
+                            <div>{`Hello, ${username}`}</div>
                             <div>
                                 <Link
                                     className="header-inner-logout"
@@ -37,7 +37,7 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-    user: PropTypes.string,
+    username: PropTypes.string,
     onLogoutClick: PropTypes.func
 };
 
