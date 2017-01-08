@@ -15,6 +15,7 @@ class PricingStrategy {
                 case PricingRuleTypes.QUANTITY:
                     strategy = new QuantityStrategy(pricingRule);
                     break;
+                default:
             }
         }
         else {

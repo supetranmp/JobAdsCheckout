@@ -60,28 +60,3 @@ DropDownMenu.props = {
 };
 
 export default DropDownMenu;
-
-// CustomersDropDownMenu.props = {
-//     customers: PropTypes.arrayOf(PropTypes.shape({
-//         name: PropTypes.string.isRequired,
-//         pricingRules: PropTypes.arrayOf(PropTypes.oneOfType([
-//             PropTypes.shape({
-//                 type: PropTypes.oneOf([PricingRuleTypes.RATIO]).isRequired,
-//                 itemId: PropTypes.oneOf(Object.keys(AdTypes)).isRequired,
-//                 numerator: PropTypes.number.isRequired,
-//                 denominator: PropTypes.number.isRequired
-//             }),
-//             PropTypes.shape({
-//                 type: PropTypes.oneOf([PricingRuleTypes.PRICE]).isRequired,
-//                 itemId: PropTypes.oneOf(Object.keys(AdTypes)).isRequired,
-//                 price: PropTypes.number.isRequired
-//             }),
-//             PropTypes.shape({
-//                 type: PropTypes.oneOf([PricingRuleTypes.QUANTITY]).isRequired,
-//                 itemId: PropTypes.oneOf(Object.keys(AdTypes)).isRequired,
-//                 quantity: PropTypes.number.isRequired,
-//                 price: PropTypes.number.isRequired
-//             })
-//         ]))
-//     }))
-// };

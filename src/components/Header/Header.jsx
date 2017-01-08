@@ -5,7 +5,7 @@ import CartIcon from '../Icons/CartIcon';
 import './Header.css';
 
 const Header = (props) => {
-    const {username, onLogoutClick} = props;
+    const {username, cartItemCount, onLogoutClick} = props;
 
     return (
         <div className="header">
@@ -29,7 +29,17 @@ const Header = (props) => {
                     <Link className="header-inner-login" to="/login">login</Link>
                 }
                 <Link className="header-inner-cart" to="/cart">
-                    <CartIcon />
+                    <div>
+                        {
+                            cartItemCount &&
+                            <div className="header-inner-cart-count">
+                                {
+                                    cartItemCount
+                                }
+                            </div>
+                        }
+                        <CartIcon />
+                    </div>
                 </Link>
             </div>
         </div>
@@ -38,6 +48,7 @@ const Header = (props) => {
 
 Header.propTypes = {
     username: PropTypes.string,
+    cartItemCount: PropTypes.number,
     onLogoutClick: PropTypes.func
 };
 

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Checkout from '../../lib/Checkout';
 import DataService from '../../services/DataService';
 import DataContextFactory from '../../services/DataContextFactory';
 import './AdList.css';
@@ -8,7 +9,9 @@ class AdList extends Component {
         super(props);
 
         this.adsDataService = new DataService(DataContextFactory.AdsDataContext);
-        this.state = { ads: [] };
+        this.state = { 
+            ads: []
+        };
     }
 
     componentWillMount() {
@@ -18,18 +21,27 @@ class AdList extends Component {
         });
     }
 
+    addToCart = (item) => {
+        const {user, cart, onCartChange} = this.context;
+        const checkout = new Checkout(user.pricingRules, cart);
+        checkout.add(item);
+
+        if (onCartChange) {
+            onCartChange(checkout.cart);
+        }
+    }
+
     render() {
         const {ads} = this.state;
-        const {onItemAddClick} = this.props;
 
         return (
             <div className="ad">
                 <div className="ad-list">
                     {
                         (ads && ads.length) &&
-                        ads.map((a) => {
+                        ads.map((a, index) => {
                             return (
-                                <div key={a.id}>
+                                <div key={index}>
                                     <div className="ad-item">
                                         <span className="ad-details">
                                             <h3>{a.name}</h3>
@@ -37,7 +49,7 @@ class AdList extends Component {
                                         </span>
                                         <span className="ad-button">
                                             <p>{`$${a.price}`}</p>
-                                            <button onClick={onItemAddClick}>add to cart</button>
+                                            <button onClick={() => this.addToCart(a)}>add to cart</button>
                                         </span>
                                     </div>
                                     <hr />
@@ -51,12 +63,10 @@ class AdList extends Component {
     };
 }
 
-AdList.propTypes = {
-    onItemAddClick: PropTypes.func
-}
-
 AdList.contextTypes = {
-    onItemAdded: PropTypes.func
+    user: PropTypes.object,
+    cart: PropTypes.array,
+    onCartChange: PropTypes.func
 };
 
 export default AdList;

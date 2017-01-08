@@ -8,22 +8,33 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        const loggedInUser = localStorage.user && JSON.parse(localStorage.user);
+        const user = localStorage.user && JSON.parse(localStorage.user);
+        const cart = localStorage.cart && JSON.parse(localStorage.cart);
         this.state = {
-            username: loggedInUser && loggedInUser.name,
+            user: user,
+            cart: cart
         };
+    }
+
+    componentWillMount() {
+        console.log('Component wil mount...');
     }
 
     getChildContext() {
-        return { 
-            onItemAdded: this.onItemAdded
+        const {user, cart} = this.state;
+        return {
+            user: user,
+            cart: cart,
+            onCartChange: this.onCartChanged
         };
     }
 
-    onItemAdded = (item) => {
-        const {state} = this;
-        state.cart = state.cart.concat(item);
-        this.setState(state);
+    onCartChanged = (cart) => {
+        // Persist cart in local storage
+        localStorage.cart = JSON.stringify(cart);
+        this.setState({
+            cart: JSON.parse(localStorage.cart)
+        });
     }
 
     onLogoutClickHandler = () => {
@@ -33,12 +44,15 @@ class App extends Component {
     }
 
     render() {
-        const {username} = this.state;
+        const {user, cart} = this.state;
         const {children} = this.props;
 
         return (
             <div className="app">
-                <Header username={username} onLogoutClick={this.onLogoutClickHandler} />
+                <Header
+                    username={user && user.name}
+                    cartItemCount={cart && cart.length}
+                    onLogoutClick={this.onLogoutClickHandler} />
                 {children}
             </div>
         );
@@ -50,7 +64,9 @@ App.propTypes = {
 };
 
 App.childContextTypes = {
-    onItemAdded: PropTypes.func
+    user: PropTypes.object,
+    cart: PropTypes.array,
+    onCartChange: PropTypes.func
 };
 
 export default withRouter(App);

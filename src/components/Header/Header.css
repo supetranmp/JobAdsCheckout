@@ -21,6 +21,26 @@
     /*margin-left: auto;*/
 }
 
+.header-inner-cart > div {
+    position: relative;
+    /*padding: 0;*/
+}
+
+.header-inner-cart-count {
+    position: absolute;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #0A3387;
+    font-size: 0.6em;
+    top: -2px;
+    right: -2px;
+    padding: 1px 3px;
+    border-radius: 3px;
+    text-align: center;
+    min-width: 6px;
+    min-height: 6px;
+}
+
 .header-inner-user {
     margin-left: auto;
     color: #FFFFFF;
@@ -29,10 +49,10 @@
 }
 
 .header-inner-logout {
-    font-size: 0.8em;   
+    font-size: 0.8em;
 }
 
 .header-inner-login {
-    font-size: 1.2em;
+    font-size: 0.8em;
     margin-left: auto;
 }
