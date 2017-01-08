@@ -21,15 +21,17 @@ class Checkout {
                 const cartItem = this.cart[itemIndex];
                 cartItem.quantity += 1;
                 cartItem.price = pricingStrategy.calculate(item, cartItem.quantity);
+                cartItem.pricingRule = pricingStrategy.isImplemented(item, cartItem.quantity);
             }
             else {
                 // Add the item to the cart
                 const itemPrice = pricingStrategy.calculate(item, 1);
+                const itemPricingRule = pricingStrategy.isImplemented(item, 1);
                 this.cart.push({
                     item: item,
                     quantity: 1,
                     price: itemPrice,
-                    pricingRule: pricingRule
+                    pricingRule: itemPricingRule
                 });
             }
         }
@@ -54,6 +56,7 @@ class Checkout {
                     const cartItem = this.cart[itemIndex];
                     cartItem.quantity -= 1;
                     cartItem.price = pricingStrategy.calculate(item, cartItem.quantity);
+                    cartItem.pricingRule = pricingStrategy.isImplemented(item, cartItem.quantity);
                 }
                 else {
                     // Remove the item from the cart

@@ -1,0 +1,14 @@
+.page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.page-inner {
+    width: 600px;
+}
+
+.page-inner > h2 {
+    margin-top: 5px;
+    margin-bottom: 0;
+}

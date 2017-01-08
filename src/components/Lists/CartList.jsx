@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import RemoveIcon from '../../components/Icons/RemoveIcon';
 import Checkout from '../../lib/Checkout';
+import PricingRuleTypes from '../../lib/PricingRuleTypes';
 import Helpers from '../../lib/Helpers';
 import './CartList.css';
 
@@ -21,8 +22,6 @@ class CartList extends Component {
             total: checkout.total()
         });
     }
-
-    compom
 
     onQuantityChange = (cartItem, event) => {
         const {value} = event.target;
@@ -63,6 +62,27 @@ class CartList extends Component {
 
     render() {
         const {cart, total} = this.state;
+        const getPricingRule = (cartItem) => {
+            const {item, pricingRule} = cartItem;
+
+            let description;
+            if (pricingRule) {
+                switch (pricingRule.type) {
+                    case PricingRuleTypes.RATIO:
+                        description = `${pricingRule.numerator} for ${pricingRule.denominator} deal on ${item.name}s`;
+                        break;
+                    case PricingRuleTypes.PRICE:
+                        description = `Price drops to ${Helpers.toCurrency(pricingRule.price)} per ad on ${item.name}s`;
+                        break;
+                    case PricingRuleTypes.QUANTITY:
+                        description = `Price drops to ${Helpers.toCurrency(pricingRule.price)} per ad on ${item.name}s when ${pricingRule.quantity} or more are purchased`;
+                        break;
+                    default:
+                }
+
+            }
+            return description;
+        };
 
         return (
             <div className="cart">
@@ -83,7 +103,7 @@ class CartList extends Component {
                                             }).quantity
                                             } Items`}</span>
                                         <span className="cart-details-col2">Quantity</span>
-                                        <span className="cart-details-col3 list-header">Item Price</span>
+                                        <span className="cart-details-col3 list-header">Total Amount</span>
                                         <div className="filler" />
                                     </div>
                                 </div>
@@ -116,6 +136,11 @@ class CartList extends Component {
                                                         <RemoveIcon />
                                                     </button>
                                                 </div>
+                                                <div className="cart-pricing-rule">
+                                                    {
+                                                        getPricingRule(cartItem)
+                                                    }
+                                                </div>
                                                 <hr />
                                             </div>
                                         );
@@ -125,6 +150,9 @@ class CartList extends Component {
                                     <h2>Total:</h2>
                                     <p>{`${Helpers.toCurrency(total)}`}</p>
                                 </span>
+                                <button className="cart-button-checkout">
+                                    <Link to="/checkout">Proceed to Checkout</Link>
+                                </button>
                             </div>
                         ) ||
                         <div>

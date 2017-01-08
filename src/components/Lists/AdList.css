@@ -11,8 +11,7 @@
 .ad-list-header {
     text-decoration: none;
     text-align: left;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px;
 }
 
 .ad-list-header > h2 {
@@ -25,7 +24,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 20px;
+    margin: 10px;
 }
 
 .ad-details-col1 {

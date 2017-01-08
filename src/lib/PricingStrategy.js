@@ -29,7 +29,10 @@ class PricingStrategy {
 function DefaultStrategy() {
     this.calculate = (item, quantity) => {
         return item.price * quantity;
-    }
+    };
+    this.isImplemented = (item, quantity) => {
+        return null;
+    };
 }
 
 function RatioStrategy(pricingRule) {
@@ -47,6 +50,11 @@ function RatioStrategy(pricingRule) {
         // Sum of bundle and excess
         return bundleTotal + excessTotal;
     };
+    this.isImplemented = (item, quantity) => {
+        return (quantity >= this.pricingRule.denominator) ?
+            this.pricingRule :
+            null;
+    };
 };
 
 function PriceStrategy(pricingRule) {
@@ -54,7 +62,12 @@ function PriceStrategy(pricingRule) {
     this.calculate = (item, quantity) => {
         // The price set for the customer is used insted of the item price.
         return pricingRule.price * quantity;
-    }
+    };
+    this.isImplemented = (item, quantity) => {
+        return (item.id === this.pricingRule.itemId) ?
+            this.pricingRule :
+            null;
+    };
 }
 
 function QuantityStrategy(pricingRule) {
@@ -63,7 +76,12 @@ function QuantityStrategy(pricingRule) {
         // PRICE depends on the  minimum quantity set for certain customers, otherwise the item price is used.
         let pricePerItem = quantity >= pricingRule.quantity ? pricingRule.price : item.price;
         return pricePerItem * quantity;
-    }
+    };
+    this.isImplemented = (item, quantity) => {
+        return (quantity >= this.pricingRule.quantity) ?
+            this.pricingRule :
+            null;
+    };
 }
 
 module.exports = PricingStrategy;
