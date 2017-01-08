@@ -38,7 +38,7 @@ class Checkout {
         }
     }
 
-    remove(item) {
+    subtract(item) {
         try {
             // Get item index from cart
             const itemIndex = findItemIndexByItemId(this.cart, item.id);
@@ -66,12 +66,30 @@ class Checkout {
         }
     }
 
+    remove(item) {
+        try {
+            // Get item index from cart
+            const itemIndex = findItemIndexByItemId(this.cart, item.id);
+
+            if (itemIndex >= 0) {
+                // Remove the item from the cart
+                this.cart.splice(itemIndex, 1);
+            }
+        }
+        catch (err) {
+            console.error(err.message);
+        }
+    }
+
     total() {
         let total = 0;
         try {
-            total = this.cart.reduce((a, b) => {
-                return { price: a.price + b.price }
-            }).price;
+            total =
+                this.cart &&
+                this.cart.length &&
+                this.cart.reduce((a, b) => {
+                    return { price: a.price + b.price }
+                }).price;
         }
         catch (err) {
             console.error(err.message);

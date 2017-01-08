@@ -25,17 +25,25 @@ class LoginForm extends Component {
         const {router} = this.props;
         const {customers} = this.state;
 
-        // Save user in the browser's local storage
-        localStorage.user = JSON.stringify(
-            customers.find(c => {
-                return c.name === customerName
-            })
-        );
+        // Check if selected customer currenly logged in
+        const customer = localStorage.user && JSON.parse(localStorage.user);
+        if (!customer || customer.name !== customerName) {
+            // Remove the cart from local storage
+            localStorage.removeItem('cart');
+
+            // Save user in the browser's local storage
+            localStorage.user = JSON.stringify(
+                customers.find(c => {
+                    return c.name === customerName
+                })
+            );
+        }
 
         router.push('/');
     }
 
     onAnonymousLinkClicked = () => {
+        // Remove user from local storage
         localStorage.removeItem('user');
     }
 

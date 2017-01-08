@@ -30,7 +30,7 @@ class App extends Component {
     }
 
     onCartChanged = (cart, callback) => {
-        // Persist cart in local storage
+        // Save cart in local storage
         localStorage.cart = JSON.stringify(cart);
         this.setState({
             cart: JSON.parse(localStorage.cart)
@@ -40,6 +40,7 @@ class App extends Component {
     onLogoutClickHandler = () => {
         const {router} = this.props;
         localStorage.removeItem('user');
+        localStorage.removeItem('cart');
         router.push('/login');
     }
 

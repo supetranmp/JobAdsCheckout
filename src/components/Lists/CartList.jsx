@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import RemoveIcon from '../../components/Icons/RemoveIcon';
 import Checkout from '../../lib/Checkout';
 import Helpers from '../../lib/Helpers';
 import './CartList.css';
@@ -13,7 +14,7 @@ class CartList extends Component {
 
     componentWillMount() {
         const {user, cart} = this.context;
-        const checkout = new Checkout(user.pricingRules, cart);
+        const checkout = new Checkout(user && user.pricingRules, cart);
 
         this.setState({
             cart: checkout.cart,
@@ -26,14 +27,29 @@ class CartList extends Component {
     onQuantityChange = (cartItem, event) => {
         const {value} = event.target;
         const {user, cart, onCartChange} = this.context;
-        const checkout = new Checkout(user.pricingRules, cart);
+        const checkout = new Checkout(user && user.pricingRules, cart);
 
         if (cartItem.quantity < value) {
             checkout.add(cartItem.item);
         }
-        else {
-            checkout.remove(cartItem.item);
+        else if (value > 0) {
+            checkout.subtract(cartItem.item);
         }
+
+        if (onCartChange) {
+            onCartChange(checkout.cart, () => {
+                this.setState({
+                    cart: checkout.cart,
+                    total: checkout.total()
+                });
+            });
+        }
+    }
+
+    onRemoveItem = (cartItem, event) => {
+        const {user, cart, onCartChange} = this.context;
+        const checkout = new Checkout(user.pricingRules, cart);
+        checkout.remove(cartItem.item);
 
         if (onCartChange) {
             onCartChange(checkout.cart, () => {
@@ -94,7 +110,11 @@ class CartList extends Component {
                                                             }
                                                         </div>
                                                     </span>
-                                                    <button className="cart-button-remove-item">X</button>
+                                                    <button
+                                                        className="cart-button-remove-item"
+                                                        onClick={this.onRemoveItem.bind(this, cartItem)}>
+                                                        <RemoveIcon />
+                                                    </button>
                                                 </div>
                                                 <hr />
                                             </div>

@@ -24,7 +24,7 @@ class AdList extends Component {
 
     addToCart = (item) => {
         const {user, cart, onCartChange} = this.context;
-        const checkout = new Checkout(user.pricingRules, cart);
+        const checkout = new Checkout(user && user.pricingRules, cart);
         checkout.add(item);
 
         if (onCartChange) {

@@ -67,13 +67,13 @@ describe('Checkout', () => {
         });
     });
 
-    describe('Expected checkout total after removing item(s)', () => {
+    describe('Expected checkout total after subtracting item(s)', () => {
         it('for default customer is $717.98', () => {
             const checkout = new Checkout();
             checkout.add(classicAd);
             checkout.add(standoutAd);
             checkout.add(premiumAd);
-            checkout.remove(classicAd);
+            checkout.subtract(classicAd);
             expect(checkout.total()).toBe(717.98);
         });
 
@@ -83,7 +83,7 @@ describe('Checkout', () => {
             checkout.add(classicAd);
             checkout.add(classicAd);
             checkout.add(premiumAd);
-            checkout.remove(classicAd);
+            checkout.subtract(classicAd);
             expect(checkout.total()).toBe(934.97);
         });
 
@@ -93,7 +93,7 @@ describe('Checkout', () => {
             checkout.add(standoutAd);
             checkout.add(standoutAd);
             checkout.add(premiumAd);
-            checkout.remove(standoutAd);
+            checkout.subtract(standoutAd);
             expect(checkout.total()).toBe(994.97);
         });
 
@@ -103,7 +103,7 @@ describe('Checkout', () => {
             checkout.add(premiumAd);
             checkout.add(premiumAd);
             checkout.add(premiumAd);
-            checkout.remove(premiumAd);
+            checkout.subtract(premiumAd);
             expect(checkout.total()).toBe(1184.97);
         });
 
@@ -118,8 +118,64 @@ describe('Checkout', () => {
             checkout.add(premiumAd);
             checkout.add(premiumAd);
             checkout.add(premiumAd);
-            checkout.remove(standoutAd);
+            checkout.subtract(standoutAd);
             expect(checkout.total()).toBe(2249.93);
+        });
+    });
+
+    describe('Expected checkout total after removing item(s)', () => {
+        it('for default customer is $717.98', () => {
+            const checkout = new Checkout();
+            checkout.add(classicAd);
+            checkout.add(standoutAd);
+            checkout.add(premiumAd);
+            checkout.remove(classicAd);
+            expect(checkout.total()).toBe(717.98);
+        });
+
+        it('for Unilever is $394.99', () => {
+            const checkout = new Checkout(unilever.pricingRules);
+            checkout.add(classicAd);
+            checkout.add(classicAd);
+            checkout.add(classicAd);
+            checkout.add(premiumAd);
+            checkout.remove(classicAd);
+            expect(checkout.total()).toBe(394.99);
+        });
+
+        it('for Apple is $394.99', () => {
+            const checkout = new Checkout(apple.pricingRules);
+            checkout.add(standoutAd);
+            checkout.add(standoutAd);
+            checkout.add(standoutAd);
+            checkout.add(premiumAd);
+            checkout.remove(standoutAd);
+            expect(checkout.total()).toBe(394.99);
+        });
+
+        it('for Nike is $0.00', () => {
+            const checkout = new Checkout(nike.pricingRules);
+            checkout.add(premiumAd);
+            checkout.add(premiumAd);
+            checkout.add(premiumAd);
+            checkout.add(premiumAd);
+            checkout.remove(premiumAd);
+            expect(checkout.total()).toBe(0);
+        });
+
+        it('for Ford is $1479.96', () => {
+            const checkout = new Checkout(ford.pricingRules);
+            checkout.add(classicAd);
+            checkout.add(classicAd);
+            checkout.add(classicAd);
+            checkout.add(classicAd);
+            checkout.add(classicAd);
+            checkout.add(standoutAd);
+            checkout.add(premiumAd);
+            checkout.add(premiumAd);
+            checkout.add(premiumAd);
+            checkout.remove(classicAd);
+            expect(checkout.total()).toBe(1479.96);
         });
     });
 });
