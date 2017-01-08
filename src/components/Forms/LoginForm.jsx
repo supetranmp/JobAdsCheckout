@@ -21,9 +21,17 @@ class LoginForm extends Component {
         });
     }
 
-    onCustomerChange = (customer) => {
+    onCustomerChange = (customerName) => {
         const {router} = this.props;
-        localStorage.user = customer;
+        const {customers} = this.state;
+
+        // Save user in the browser's local storage
+        localStorage.user = JSON.stringify(
+            customers.find(c => {
+                return c.name === customerName
+            })
+        );
+
         router.push('/');
     }
 
