@@ -11,7 +11,7 @@
 .ad-list-header {
     text-decoration: none;
     text-align: left;
-    margin-top: 5px;    
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 
@@ -57,4 +57,16 @@
 
 .ad-details-col2 > button {
     height: 24px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    background-color: #0A3387;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    outline: 0;
+}
+
+.ad-details-col2 > button:hover {
+    background-color: #0f4cc7;
 }

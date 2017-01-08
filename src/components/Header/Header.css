@@ -44,6 +44,10 @@
     justify-content: center;
 }
 
+.header-inner-cart-count:hover {
+    background-color: #0f4cc7;
+}
+
 .header-inner-user {
     margin-left: auto;
     color: #FFFFFF;

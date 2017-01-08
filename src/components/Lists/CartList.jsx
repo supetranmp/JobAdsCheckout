@@ -130,7 +130,7 @@ class CartList extends Component {
                         <div>
                             <span className="cart-list-header">
                                 <Link to="/">{`< Back to Ads`}</Link>
-                                <h2>There are no items in this cart.</h2>
+                                <h2>Your shopping cart is empty.</h2>
                             </span>
                             <hr />
                         </div>
