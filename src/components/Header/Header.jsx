@@ -17,7 +17,7 @@ const Header = (props) => {
                     (
                         user &&
                         <span className="header-inner-user">
-                            <div>{`Hello, ${user}`}</div>
+                            <div>{`Hello, ${user.name}`}</div>
                             <div>
                                 <Link
                                     className="header-inner-logout"
@@ -39,10 +39,6 @@ const Header = (props) => {
 Header.propTypes = {
     user: PropTypes.string,
     onLogoutClick: PropTypes.func
-};
-
-Header.contextTypes = {
-    form: PropTypes.object.isRequired
 };
 
 export default Header;

@@ -1,8 +1,8 @@
 import PricingStrategy from './PricingStrategy';
 
 class Checkout {
-    constructor(pricingRules) {
-        this.cart = [];
+    constructor(pricingRules, cart = []) {
+        this.cart = cart;
         this.pricingRules = (pricingRules && [].concat(pricingRules)) || [];
     }
 

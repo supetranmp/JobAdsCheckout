@@ -16,7 +16,7 @@ describe('Data Service', () => {
 
     it('should throw an error when provider is invalid', () => {
         const newDataService = () => { const dataService = new DataService() };
-        expect(newDataService).toThrowError(InvalidArgumentError);
+        expect(newDataService).toThrowError('Context is invalid.');
     });
 
     // get Method

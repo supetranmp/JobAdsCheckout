@@ -9,13 +9,15 @@ class App extends Component {
         super(props);
 
         this.state = {
-            user: localStorage.customer
+            user: localStorage.user
         };
     }
 
-    // getChildContext() {
-    //     return { form: this };
-    // }
+    getChildContext() {
+        return { 
+            onItemAdded: this.onItemAdded
+        };
+    }
 
     onItemAdded = (item) => {
         const {state} = this;
@@ -25,7 +27,7 @@ class App extends Component {
 
     onLogoutClickHandler = () => {
         const {router} = this.props;
-        localStorage.removeItem('customer');
+        localStorage.removeItem('user');
         router.push('/login');
     }
 
@@ -46,8 +48,8 @@ App.propTypes = {
     children: PropTypes.object.isRequired
 };
 
-// App.childContextTypes = {
-//     checkout: PropTypes.object.isRequired
-// };
+App.childContextTypes = {
+    onItemAdded: PropTypes.func
+};
 
 export default withRouter(App);

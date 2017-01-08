@@ -29,8 +29,8 @@ class AdList extends Component {
                         (ads && ads.length) &&
                         ads.map((a) => {
                             return (
-                                <div>
-                                    <div key={a.id} className="ad-item">
+                                <div key={a.id}>
+                                    <div className="ad-item">
                                         <span className="ad-details">
                                             <h3>{a.name}</h3>
                                             <p className="word-break">{a.description}</p>
@@ -54,5 +54,9 @@ class AdList extends Component {
 AdList.propTypes = {
     onItemAddClick: PropTypes.func
 }
+
+AdList.contextTypes = {
+    onItemAdded: PropTypes.func
+};
 
 export default AdList;

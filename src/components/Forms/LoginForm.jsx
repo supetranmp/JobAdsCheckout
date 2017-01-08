@@ -23,12 +23,12 @@ class LoginForm extends Component {
 
     onCustomerChange = (customer) => {
         const {router} = this.props;
-        localStorage.customer = customer;
+        localStorage.user = customer;
         router.push('/');
     }
 
     onAnonymousLinkClicked = () => {
-        localStorage.removeItem('customer');
+        localStorage.removeItem('user');
     }
 
     render() {
